@@ -1,0 +1,17 @@
+<script>
+$(document).ready(function(){
+	var list = $.couch.db("okarapp").view("objectives", {
+    	success: function(data) {
+        console.log(data.last_name);
+    	},
+    	error: function(status) {
+        console.log(status);
+    	},
+    	reduce: false
+	});
+	console.log(list);
+});
+
+
+
+</script>

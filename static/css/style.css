@@ -1,0 +1,136 @@
+.layer1 {
+margin: 0;
+padding: 0;
+width: 500px;
+}
+ 
+.heading {
+margin: 1px;
+color: #fff;
+padding: 3px 10px;
+cursor: pointer;
+position: relative;
+background-color:#c30;
+
+}
+
+#content {
+height: auto;
+width: auto;
+text-align: center;
+
+}
+p { padding: 5px 0; }
+
+#main-form input[type="text"] {
+width: 80%;
+height: 30px;
+font-size: large;
+}
+
+.goal {
+font-weight:bold;
+
+}
+
+.objective-input {
+padding: 6px;
+font-size: x-large;
+}
+
+.obj-form-title {
+font-weight: bold;
+font-size: xx-large;
+}
+
+#main-form input[type="button"]{
+font-size: xx-large;
+font-weight: bold;
+background-color:red;
+color: white;
+}
+
+.objective {
+padding: 10px 0 0 20px;
+}
+
+#kr1,#kr2,#kr3,#kr4{
+width: 700px;
+}
+
+#kr {
+width: 80%;
+height: 20px;
+font-size: medium;
+margin: 8px 0 0 0;
+}
+
+#list {
+
+	margin-top: 5%;
+
+	margin-right: auto;
+
+	margin-left: auto;
+
+	position: relative;
+
+	border-color: white;
+
+	border-style: dashed;
+
+	border-width: 0px;
+
+	width: 20%;
+
+	font-weight: bold;
+
+	font-family: Georgia, "Times New Roman", Times, serif;
+
+	text-align: center;
+
+}
+
+body {
+	color: #e7e7e7;
+	background-color: #101010;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+}
+
+body a {
+	color: #feff42;
+}
+
+body input[type="text"] {
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: medium;
+	border-style: none;
+	color: #eeeeee;
+	background-color: #040404;
+}
+
+body li {
+	list-style-type: none;
+}
+
+tbody {
+	text-align: center;
+}
+
+.amb {
+	margin-left: 26%;
+	float: left;
+	text-align: left;
+	color: #d4d4d4;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: x-small;
+}
+
+#objective1, #objective2, #objective3, #objective4{
+font-size: large;
+font-weight: bold;
+width: 700px;
+}
+

@@ -1,0 +1,56 @@
+
+
+<br>
+<form id="login-form">
+Login:<input type="text" id="login"><br>
+Password: <input type="text" id="pass"><br>
+<input type="button" value="login" id="login-button">
+</form>
+
+
+<script type="text/javascript">
+
+$(window).ready(function() {
+
+	$("#name").text("Please Log In");
+
+	$("#login-button").click(function() {
+		var login = $("#login").val();
+		var password = $("#pass").val();
+		console.log(login + " " + password);
+		$.couch.login({
+    		name: login,
+    		password: password,
+    		success: function(data) {
+        		console.log(data);
+        		getUser();
+    		},
+    		error: function(status) {
+        	console.log(status);
+   		 	}
+		});	
+	});
+	
+
+
+
+	var getUser = function () {
+		$.couch.session({
+		    success: function(data) {
+		       	$.couch.db("_users").openDoc("org.couchdb.user:" + data.userCtx.name, {
+			    	success: function(data) {
+						$("#name").text("Hello, " + data.first_name + " " + data.last_name);
+						window.location.href = "myOKRs";
+				    },
+			    	error: function(status) {
+			        	console.log(status);
+			    	}
+				});
+		    }
+		});
+	};
+
+
+});
+
+</script>

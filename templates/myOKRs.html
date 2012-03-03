@@ -1,0 +1,37 @@
+ <script type="text/javascript">
+
+
+var stepOne = $.couch.session({
+	success: function(data) {
+		stepTwo(data.userCtx.name);
+	}
+});
+
+var stepTwo = function(userName) {
+	console.log('user', userName)
+	$.couch.db("objkeys").view("okrs/byOwner", {
+	    success: function(data) {
+	        console.log(data);
+	        stepThree(data);
+	    },
+	    error: function(status) {
+	        console.log(status);
+	    },
+	     key: userName,
+	    reduce: false
+	   
+	});
+};
+
+var stepThree = function(data) {
+	for (i=0; i<data.rows.length; i++) {
+		$("#list").append(
+			"<a href='{baseURL}/" + 
+			data.rows[i].value._id + 
+			"'>"+ data.rows[i].value.period + 
+			"</a><br>")
+	}
+};
+</script>
+
+<div id="list"></div>

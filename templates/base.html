@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+    <title>{title}</title> 
+    <link type='text/css' rel="stylesheet" href="{baseURL}/static/css/style.css">
+    <script src="{baseURL}/static/js/jquery.js"></script>
+     <script src="{baseURL}/static/js/jquery-ui.js"></script>
+    <script src="{baseURL}/static/js/json2.js"></script>
+      <script src="{baseURL}/static/js/sha1.js"></script>
+    <script src="{baseURL}/static/js/jquery.couch.js"></script>
+    <script src="{baseURL}/modules.js"></script>
+    <script src="{baseURL}/duality.js"></script>
+     <script src="{baseURL}/static/app/getuser.js"></script>
+
+  </head> 
+  <body> 
+  <div id="name"></div>
+   <a href="{baseURL}/login">Login</a> |
+    <a href="{baseURL}/logout">Logout</a> |
+    <a href="{baseURL}/addOKR">Add OKRs</a> |
+       <a href="{baseURL}/myOKRs">View My OKRs</a> |
+        <a href="{baseURL}/allOKRs">View All OKRs</a>
+   
+
+    <div id="content">
+      {content}
+    
+   <script>    	
+ $(document).ready(function() {
+ 	
+ 	var appendName = function(data) {
+ 		$("#name").append("Hello, " + data.first_name + " " + data.last_name);
+ 	};
+ 	userData(appendName);
+ });
+
+  </script>
+    </div>
+
+
+  </body>
+  
+  
+ 
+ 
+</html>

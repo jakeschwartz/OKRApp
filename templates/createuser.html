@@ -1,0 +1,85 @@
+
+
+
+<form id="login-form">
+First Name:<input type="text" id="first_name"><br>
+Last Name:<input type="text" id="last_name"><br>
+Username:<input type="text" id="login"><br>
+Password: <input type="text" id="pass"><br>	
+Team: <select id="team">
+				<option>Education</option>
+				<option>Product</option>
+				<option>Membership & Experience</option>
+				<option>Executive</option>
+	</select><br>
+Supervisor: <select id="supervisor"></select><br>
+<input type="button" value="login" id="login-button">
+</form>
+
+
+<script type="text/javascript">
+
+$(window).ready(function() {
+
+	$("#login-button").click(function() {
+		var name = $("#login").val();
+		var password = $("#pass").val();
+		var userDoc = {
+    		_id: ("org.couchdb.user:" + name),
+    		 name: name,
+    		 first_name: $("#first_name").val(),
+    		 last_name: $("#last_name").val(),
+    		 team: $("#team").val(),
+    		 supervisor: $("#supervisor").val(),
+    		 roles: ["normal"]
+		};
+		$.couch.signup(userDoc, password, {
+    		success: function(data) {
+       			console.log(data);
+       			$.couch.login({
+    				name: name,
+    				password: password,
+    				success: function(data) {
+        				console.log(data);
+        				window.location.href = "";
+    				},
+    				error: function(status) {
+        				console.log(status);
+   		 			}
+				});	
+    		},
+    		error: function(status) {
+        		console.log(status);
+   			 }
+		});
+	
+	});
+	
+	
+
+});
+
+var userNames = function() {
+	$.couch.db("_users").view("userNames/userNames", {
+	    success: function(data) {
+	        console.log(data);
+	        var list = [];
+	        for (i=0; i<data.rows.length; i++) {
+	        	list.push(data.rows[i].value);
+	        }
+	        $.each(list, function(key, value) {   
+     	$('#supervisor')
+         .append($("<option></option>")
+         .attr("value",key)
+         .text(value)); 
+});
+	    },
+	    error: function(status) {
+	        console.log(status);
+	    },
+	    reduce: false
+	});
+};
+userNames();
+
+</script>
